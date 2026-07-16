@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <p class="eyebrow">About</p>
+  <h1 class="page-hero-title">{{ headline }}</h1>
+</section>
+
+<section class="about-body">
+  <div class="about-photo">
+    <img src="{{ photo }}" alt="{{ site.name }}" loading="lazy">
+  </div>
+  <div class="about-copy">
+    {{ content | safe }}
+  </div>
+</section>
