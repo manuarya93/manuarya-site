@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: manuarya93/manuarya-site
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 # This tells Decap CMS to write uploaded photos into src/images/uploads
 # and reference them from the site at /images/uploads/...
