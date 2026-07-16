@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Work — Manu Arya
+permalink: /work/
+---
+<section class="page-hero">
+  <p class="eyebrow">Work</p>
+  <h1 class="page-hero-title">Things I'm building, backing, and structuring.</h1>
+</section>
+
+<section class="work-list">
+  {% for project in collections.projects %}
+  <article class="work-item" id="{{ project.fileSlug }}">
+    <div class="work-item-media" style="background-image:url('{{ project.data.image }}')"></div>
+    <div class="work-item-copy">
+      <span class="project-tag">{{ project.data.tag }} &middot; {{ project.data.year }}</span>
+      <h2>{{ project.data.title }}</h2>
+      <p class="work-summary">{{ project.data.summary }}</p>
+      <div class="work-detail">{{ project.templateContent | safe }}</div>
+    </div>
+  </article>
+  {% endfor %}
+</section>

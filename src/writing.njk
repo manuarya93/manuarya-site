@@ -1,0 +1,22 @@
+---
+layout: base.njk
+title: Writing — Manu Arya
+permalink: /writing/
+---
+<section class="page-hero">
+  <p class="eyebrow">Writing</p>
+  <h1 class="page-hero-title">Notes on strategy, investing, and energy.</h1>
+</section>
+
+<section class="post-list">
+  {% for post in collections.posts %}
+  <a class="post-card" href="{{ post.url }}">
+    <div class="post-card-image" style="background-image:url('{{ post.data.image }}')"></div>
+    <div class="post-card-body">
+      <span class="post-card-date">{{ post.data.date | dateDisplay }}</span>
+      <h2>{{ post.data.title }}</h2>
+      <p>{{ post.data.excerpt }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</section>
