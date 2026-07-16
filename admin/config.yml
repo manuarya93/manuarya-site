@@ -1,0 +1,113 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# This tells Decap CMS to write uploaded photos into src/images/uploads
+# and reference them from the site at /images/uploads/...
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "home"
+    label: "Home Page"
+    files:
+      - file: "src/_data/home.json"
+        label: "Home Page Content"
+        name: "home"
+        fields:
+          - { label: "Eyebrow line (small text above the headline)", name: "eyebrow", widget: "string" }
+          - { label: "Big headline (use line breaks for new lines)", name: "headline", widget: "text" }
+          - { label: "Subheadline", name: "subhead", widget: "text" }
+          - { label: "Button text", name: "cta_label", widget: "string" }
+          - { label: "Button link", name: "cta_url", widget: "string" }
+          - label: "Highlight stats (the 3 numbers on the homepage)"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - { label: "Stat", name: "stat", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+          - { label: "Intro line above featured work", name: "featured_intro", widget: "string" }
+
+  - name: "about"
+    label: "About Page"
+    files:
+      - file: "src/content/about.md"
+        label: "About Page Content"
+        name: "about"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Photo", name: "photo", widget: "image" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "projects"
+    label: "Work / Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Order (lower = shown first)", name: "order", widget: "number", default: 1 }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Tag (short label, e.g. 'Founder')", name: "tag", widget: "string" }
+      - { label: "Year / timeframe", name: "year", widget: "string" }
+      - { label: "One-line summary", name: "summary", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Featured on homepage", name: "featured", widget: "boolean", default: true }
+      - { label: "Full description", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Writing / Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Short excerpt (shown on the writing list page)", name: "excerpt", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Post body", name: "body", widget: "markdown" }
+
+  - name: "contact"
+    label: "Contact Page"
+    files:
+      - file: "src/_data/contact.json"
+        label: "Contact Page Content"
+        name: "contact"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Subheadline", name: "subhead", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone (leave blank to hide)", name: "phone", widget: "string", required: false }
+          - { label: "Calendly link (optional, not shown yet)", name: "calendly", widget: "string", required: false }
+          - { label: "Location", name: "location", widget: "string" }
+          - label: "Social links (leave URL blank to hide one)"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - file: "src/_data/site.json"
+        label: "Global Site Settings"
+        name: "site"
+        fields:
+          - { label: "Your Name", name: "name", widget: "string" }
+          - { label: "Page title (browser tab / SEO)", name: "title", widget: "string" }
+          - { label: "Tagline (used for SEO description)", name: "tagline", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "Twitter / X URL", name: "twitter", widget: "string", required: false }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "Live domain", name: "domain", widget: "string" }
+          - label: "Navigation menu (advanced — edit carefully)"
+            name: "nav"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
